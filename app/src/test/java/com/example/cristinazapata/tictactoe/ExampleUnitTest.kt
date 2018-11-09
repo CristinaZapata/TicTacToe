@@ -1,10 +1,10 @@
 package com.example.cristinazapata.tictactoe
 
-import android.content.Context
+import android.support.test.runner.AndroidJUnit4
 import org.junit.Test
 
 import org.junit.Assert.*
-import androidx.test.core.app.ApplicationProvider
+import org.junit.runner.RunWith
 
 
 /**
@@ -12,14 +12,11 @@ import androidx.test.core.app.ApplicationProvider
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
+@RunWith(AndroidJUnit4::class)
 class ExampleUnitTest {
-
-    val context = ApplicationProvider.getApplicationContext<Context>()
 
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
-
-        println("hola")
     }
 }

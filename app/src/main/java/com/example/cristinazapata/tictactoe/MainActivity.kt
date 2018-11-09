@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         textDrawPoints = findViewById(R.id.textDraws)
 
         for(i in 1..totalCells){
-            var button = findViewById<Button>(resources.getIdentifier("button$i", "id", packageName))
+            val button = findViewById<Button>(resources.getIdentifier("button$i", "id", packageName))
             button.setOnClickListener(this)
             buttons[i-1] = button
         }
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         ref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
+                if(p0.exists()){
                     player1Points = (p0.child("players").child("player1").value as Long).toInt()
                     player2Points = (p0.child("players").child("player2").value as Long).toInt()
                     drawPoints = (p0.child("players").child("draw").value as Long).toInt()
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         textDrawPoints.text = resources.getString(R.string.drawPoints, drawPoints)
     }
     
-    private fun buttonSelected(button: Button){ //usar HashMap
+    private fun buttonSelected(button: Button){
         var index = 0
 
         when(button.id){
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun checkWinner(){
         if(cellsMapping.isNotEmpty()){
             for(combination in winnerCombinations){
-                var(a, b, c) = combination
+                val(a, b, c) = combination
 
                 if(cellsMapping[a] != null && cellsMapping[a] == cellsMapping[b] && cellsMapping[a] == cellsMapping[c]){
                     winner = true
